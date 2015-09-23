@@ -36,6 +36,8 @@
           %tr
             %td
               = link_to pr["title"], pr["html_url"], target: "_blank"
+              by
+              = Pr.owner(pr)
             %td
               = Pr.comments(pr).length
             %td

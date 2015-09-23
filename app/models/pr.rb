@@ -12,7 +12,11 @@ class Pr
 
     def awaiting(pr)
       all = Team.get_members.collect{|u| u["login"]}.uniq
-      all.reject{|u| approvers(pr).include?(u) }
+      all.reject{|u| approvers(pr).include?(u) }.reject{|u| pr["user"]["login"] == u }
+    end
+
+    def owner(pr)
+      pr["user"]["login"]
     end
 
     def has_approved?(pr, user)
@@ -20,8 +24,7 @@ class Pr
     end
 
     def everyone_approved?(pr)
-      member_count = Team.get_members.count
-      comments(pr).count == member_count
+      awaiting(pr).empty?
     end
 
 
