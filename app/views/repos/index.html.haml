@@ -1,0 +1,64 @@
+.ui.visible.message.green
+  .header
+    Welcome to Koncur
+  %ul
+    %li
+      The following is a list of repos currently under code review. 
+    %li
+      New repos may be added by adding the Code Review team.
+    %li
+      To mark a PR as approved, add a :+1: or say LGTM in a comment.
+    %li
+      Please also try to leave some meaningful feedback, even if its as simple as saying: "I like how you did x"
+- Repo.all.each do |r|  
+
+  .ui.segment
+    %h4
+      = r[:name]
+
+    %table.ui.celled.table
+      %thead
+        %tr
+          %th{width: "40%"}
+            Issue
+          %th{width: "10%"}
+            Comments
+          %th{width: "20%"}
+            Approved By
+          %th{width: "20%"}
+            Awaiting
+          %th{width: "20%"}
+            You've Approved
+          %th{width: "10%"}
+            Mergable
+      %tbody
+        - Repo.open_prs(r).each do |pr|  
+          %tr
+            %td
+              = link_to pr[:title], pr[:html_url], target: "_blank"
+            %td
+              = Pr.comments(pr).length
+            %td
+              %ul
+                - Pr.approvers(pr).each do |c|
+                  %li
+                    = c
+            %td
+              %ul
+                - Pr.awaiting(pr).each do |c|
+                  %li
+                    = c
+            %td
+              - if Pr.has_approved?(pr, current_user)
+                .tc
+                  %i.check.circle.icon.big.green
+              - else
+                .tc
+                  %i.remove.icon.big.red
+            %td
+              - if Pr.everyone_approved?(pr)
+                .tc
+                  %i.check.circle.icon.big.green
+              - else
+                .tc
+                  %i.remove.icon.big.red

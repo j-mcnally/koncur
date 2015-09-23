@@ -1,0 +1,19 @@
+{
+  "name": "koncur",
+  "version": "0.0.0",
+  "authors": [
+    "Justin McNally <justin@kohactive.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic-ui": "~2.1.4",
+    "tachyons": "mrmrs/tachyons#master"
+  }
+}

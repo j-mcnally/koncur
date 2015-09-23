@@ -1,0 +1,13 @@
+{
+  "name": "tachyons",
+  "homepage": "https://github.com/mrmrs/tachyons",
+  "_release": "87416c9720",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "87416c9720d9ba175815a24342faccf68c67767c"
+  },
+  "_source": "git://github.com/mrmrs/tachyons.git",
+  "_target": "master",
+  "_originalSource": "mrmrs/tachyons"
+}

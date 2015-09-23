@@ -1,0 +1,8 @@
+.ptxxl
+  .w-50.center
+    .ui.segment.tc
+      %h1.f1
+        Koncur
+      = link_to user_omniauth_authorize_path(provider: "github"), class: "ui button massive"  do
+        %i.github.icon
+        Login with Github
