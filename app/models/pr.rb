@@ -19,6 +19,10 @@ class Pr
       pr["user"]["login"]
     end
 
+    def is_owner(pr, user)
+      owner(pr) == user.github_username
+    end
+
     def has_approved?(pr, user)
       approvers(pr).include?(user.github_username)
     end

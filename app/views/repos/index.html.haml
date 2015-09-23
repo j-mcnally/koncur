@@ -52,7 +52,10 @@
                   %li
                     = c
             %td
-              - if Pr.has_approved?(pr, current_user)
+              - if Pr.is_owner(pr, current_user)
+                .tc
+                  %i.info.circle.icon.big.blue
+              - elsif Pr.has_approved?(pr, current_user)
                 .tc
                   %i.check.circle.icon.big.green
               - else
