@@ -26,6 +26,7 @@ gem 'haml-rails'
 gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
+gem "non-stupid-digest-assets"
 
 group :development do
   gem 'better_errors'
