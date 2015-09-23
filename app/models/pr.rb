@@ -1,7 +1,7 @@
 class Pr
   class << self
     def comments(pr)
-      Rails.cache.fetch "github_comments_#{pr["id"]}", expires_in: 1.minutes do
+      Rails.cache.fetch "github_comments_#{pr["id"]}", expires_in: 10.seconds do
         JSON.parse($github.client_without_redirects({}).get(pr["comments_url"]).body)
       end
     end
