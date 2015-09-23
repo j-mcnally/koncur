@@ -5,7 +5,7 @@ class Team
     end
 
     def get_members
-      Rails.cache.fetch :github_team, expires: 30.minutes do
+      Rails.cache.fetch :github_team, expires_in: 30.minutes do
         Team.review.rels[:members].get.data
       end
     end
