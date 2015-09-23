@@ -7,7 +7,7 @@ class Repo
     end
     def open_prs(repo)
       Rails.cache.fetch "github_prs_#{repo[:name]}", expires_in: 30.seconds do
-        JSON.parse($github.client_without_redirects({}).get(repo.rels[:pulls].href).body) 
+        JSON.parse($github.client_without_redirects({}).get(repo.rels[:pulls].href).body).reject{|pr| pr["title"].include?("WIP") } 
       end
     end
   end

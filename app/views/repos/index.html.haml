@@ -11,7 +11,8 @@
     %li
       Please also try to leave some meaningful feedback, even if its as simple as saying: "I like how you did x"
 - Repo.all.each do |r|  
-
+  - op = Repo.open_prs(r)
+  - next if op.empty?
   .ui.segment
     %h4
       = r["name"]
@@ -32,7 +33,7 @@
           %th{width: "10%"}
             Mergable
       %tbody
-        - Repo.open_prs(r).each do |pr|  
+        - op.each do |pr|  
           %tr
             %td
               = link_to pr["title"], pr["html_url"], target: "_blank"
