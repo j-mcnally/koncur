@@ -14,7 +14,7 @@
 
   .ui.segment
     %h4
-      = r[:name]
+      = r["name"]
 
     %table.ui.celled.table
       %thead
@@ -35,7 +35,7 @@
         - Repo.open_prs(r).each do |pr|  
           %tr
             %td
-              = link_to pr[:title], pr[:html_url], target: "_blank"
+              = link_to pr["name"], pr["html_url"], target: "_blank"
             %td
               = Pr.comments(pr).length
             %td
