@@ -23,7 +23,11 @@ class WebhooksController < ActionController::Base
           puts "Repo is not tracked!!!!"
         end
       end
-
+    elsif webhook["pull_request"].present?
+      # New PR set pending
+      repo = webhook["repository"]
+      pr = webhook["pull_request"]
+      Statuses::Fail.call(sha: pr["head"]["sha"], repo: repo) 
     end
 
 
