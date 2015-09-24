@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resource :repos
   resource :login
 
+  post "/webhook" => "webhooks#check"
+
   get "/invalid_user" => "pages#invalid", as: "invalid_user"
 
 

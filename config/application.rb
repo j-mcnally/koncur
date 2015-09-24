@@ -38,6 +38,7 @@ module Koncur
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << "#{Bower.environment.directory}/semantic-ui/dist"
 
+    config.autoload_paths += Dir["#{config.root}/app/services"]
 
   end
 end
